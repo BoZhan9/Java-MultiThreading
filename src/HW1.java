@@ -9,10 +9,10 @@ public class HW1 {
                 String threadName = Thread.currentThread().getName();
                 for (int i = 1; i <= 26; i++) {
                     if (flag) {
-                        System.out.println(threadName + ": " + i);
+                        System.out.print("(" + threadName + "): " + i + " ");
                         flag = false;
                     } else {
-                        System.out.println(threadName + ": " + (char) (i + 96));
+                        System.out.print("(" + threadName + "): " + (char) (i + 96) + " ");
                         flag = true;
                     }
                     lock.notify();
@@ -37,3 +37,13 @@ public class HW1 {
         t2.join();
     }
 }
+
+/*
+
+Sample output:
+
+(Thread-0): 1 (Thread-1): a (Thread-0): 2 (Thread-1): b ... (Thread-0): 26 (Thread-1): z
+
+Process finished with exit code 0
+
+ */
