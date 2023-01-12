@@ -1,6 +1,6 @@
 public class HW1A {
 
-    // not working: flag is always true. t1 will run til end, and t2 won't get chance to run
+    // Flag always be true. t1 will run till the end, and t2 won't get any chance to run
     private static volatile boolean flag = true;
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(() -> {
