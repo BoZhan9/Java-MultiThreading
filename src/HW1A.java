@@ -7,14 +7,18 @@ public class HW1A {
                 for (int i = 1; i <= 26; i++) {
                     System.out.println(Thread.currentThread().getName() + " " + i);
                     flag = true;
-                }}});
+                }
+            }
+        });
         Thread t2 = new Thread(() -> {
             while (flag) {
                 System.out.println("start a new thread count alphabets");
                 for (char c = 'a'; c <= 'z'; c++) {
                     System.out.println(Thread.currentThread().getName() + " " + c);
                     flag = false;
-                }}});
+                }
+            }
+        });
 
         t1.start();
         t2.start();

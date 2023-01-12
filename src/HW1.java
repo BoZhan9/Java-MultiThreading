@@ -1,11 +1,11 @@
 public class HW1 {
-    private static final Object lock = new Object();
-    private static volatile boolean flag= true;
+    // private static final Object lock = new Object();
+    public static boolean flag= true;
 
-    static class Multithreading extends Thread {
+    public static class Multithreading extends Thread {
         @Override
         public void run() {
-            synchronized (lock) {
+            synchronized (Multithreading.class) {
                 String threadName = Thread.currentThread().getName();
                 for (int i = 1; i <= 26; i++) {
                     if (flag) {
@@ -15,10 +15,10 @@ public class HW1 {
                         System.out.print("(" + threadName + "): " + (char) (i + 96) + " ");
                         flag = true;
                     }
-                    lock.notify();
+                    Multithreading.class.notify();
                     try {
                         if (i < 26) {
-                            lock.wait();
+                            Multithreading.class.wait();
                         }
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
