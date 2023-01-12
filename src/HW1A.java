@@ -1,21 +1,23 @@
 public class HW1A {
-    private static volatile boolean flag;
+
+    // not working: flag is always true. t1 will run til end, and t2 won't get chance to run
+    private static volatile boolean flag = true;
     public static void main(String[] args) throws InterruptedException {
         Thread t1 = new Thread(() -> {
-            while (!flag) {
+            while (flag) {
                 System.out.println("start a new thread count numbers");
                 for (int i = 1; i <= 26; i++) {
                     System.out.println(Thread.currentThread().getName() + " " + i);
-                    flag = true;
+                    flag = false;
                 }
             }
         });
         Thread t2 = new Thread(() -> {
-            while (flag) {
+            while (!flag) {
                 System.out.println("start a new thread count alphabets");
                 for (char c = 'a'; c <= 'z'; c++) {
                     System.out.println(Thread.currentThread().getName() + " " + c);
-                    flag = false;
+                    flag = true;
                 }
             }
         });

@@ -56,3 +56,13 @@ public class HW1B {
 
     }
 }
+
+/*
+
+Sample output:
+
+(Thread-0): 1 (Thread-1): a (Thread-0): 2 (Thread-1): b ... (Thread-0): 26 (Thread-1): z
+
+Process finished with exit code 0
+
+ */
